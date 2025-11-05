@@ -39,7 +39,8 @@ class Record:
     def edit_phone(self, old_phone_num: str, new_phone_num: str):
         phone = self.find_phone(old_phone_num)
         if phone:
-            phone.value = new_phone_num           
+            index = self.phones.index(phone)
+            self.phones[index] = Phone(new_phone_num)
 
     def find_phone(self, phone_num: str) -> Phone:
         for phone in self.phones:
@@ -79,7 +80,7 @@ def main():
         print(record)
 
     john = book.find("John")
-    john.edit_phone("1234567890", "1112223333")
+    john.edit_phone("1234567890", "0000000000")
     print(john)
 
     found_phone = john.find_phone("5555555555")
