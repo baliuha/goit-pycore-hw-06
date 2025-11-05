@@ -32,16 +32,14 @@ class Record:
         self.phones.append(Phone(phone_num))
 
     def remove_phone(self, phone_num: str):
-        for phone in self.phones:
-            if phone.value == phone_num:
-                self.phones.remove(phone)
-                break
+        phone = self.find_phone(phone_num)
+        if phone:
+            self.phones.remove(phone)
 
     def edit_phone(self, old_phone_num: str, new_phone_num: str):
-        for i, phone in enumerate(self.phones):
-            if phone.value == old_phone_num:
-                self.phones[i] = Phone(new_phone_num)
-                break
+        phone = self.find_phone(old_phone_num)
+        if phone:
+            phone.value = new_phone_num           
 
     def find_phone(self, phone_num: str) -> Phone:
         for phone in self.phones:
